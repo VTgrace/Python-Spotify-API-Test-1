@@ -53,11 +53,32 @@ def get_songs_by_artist(token, artist_id):
 
     return json_result
 
-token = get_token()
-artist_name = input("Please enter the artist name to search for: ")
-result = search_artist(token, artist_name)
-artist_id = result["id"]
-songs = get_songs_by_artist(token, artist_id)
+def get_albums_by_artists(token, artist_id):
+    url = f"https://api.spotify.com/v1/artists/{artist_id}/albums"
+    headers = get_auth_header(token)
 
-for idx, song in enumerate(songs):
-    print(f"{idx + 1}. {song['name']}")
+    result = get(url, headers=headers)
+    json_result = json.loads(result.content)["items"]
+
+    return json_result
+
+def main():
+    token = get_token()
+    artist_name = input("Please enter the artist name to search for: ")
+    result = search_artist(token, artist_name)
+    artist_id = result["id"]
+    songs = get_songs_by_artist(token, artist_id)
+    albums = get_albums_by_artists(token, artist_id)
+
+    for idx, song in enumerate(songs):
+        print(f"{idx + 1}. {song['name']}")
+
+    albums_list = []
+
+    for idx, album in enumerate(albums):
+        albums_list.append(album['name'])
+
+    print(albums_list)
+
+if __name__ == "__main__":
+    main()
