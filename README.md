@@ -6,7 +6,7 @@ Guide video: https://www.youtube.com/watch?v=WAmEZBEeNmg
 Spotify Web API documentation: https://developer.spotify.com/documentation/web-api  
 
 # Setup
-Put Spotify Web API client id and client secret in .env  
+Put Spotify Web API CLIENT_ID and CLIENT_SECRET in .env  
 Create virtual environment - ```python -m venv .venv```  
 Activate environment  
 
