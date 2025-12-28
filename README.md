@@ -1,4 +1,4 @@
-# Python-Spotify-API-Test-1
+# Python-Spotify-API-Test
 A testing repository interacting with the Spotify Web API using Python  
 
 # Helpful Links
